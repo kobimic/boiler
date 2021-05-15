@@ -13,6 +13,7 @@ class DBConfig:
 @dataclass
 class BaseConfig(DBConfig):
     name: str = 'Boiler'
+    # this makes flask run the app twice when it is True
     is_debug: str = True
     host: str = "0.0.0.0"
     port: int = 5005
@@ -37,6 +38,7 @@ class StageConfig(BaseConfig):
 @dataclass
 class ProdConfig(BaseConfig):
     sql_url: str = f'postgresql://{BaseConfig.sql_username}:{BaseConfig.sql_password}@postgresserver/{BaseConfig.sql_db_name}'
+    is_debug: str = False
     pass
 
 
